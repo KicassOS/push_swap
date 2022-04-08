@@ -12,8 +12,8 @@
 
 #include "push_swap.h"
 
-void	ft_free(void *ptr)
+void	ft_free(void **ptr)
 {
-	free(ptr);
-	ptr = NULL;
+	free(*ptr);
+	*ptr = NULL;
 }
