@@ -6,7 +6,7 @@
 #    By: pszleper <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 21:57:25 by pszleper          #+#    #+#              #
-#    Updated: 2022/04/05 21:57:25 by pszleper         ###   ########.fr        #
+#    Updated: 2022/04/22 05:11:19 by pszleper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ $(NAME): $(OBJECTS) push_swap.h
 	$(CC) $(FLAGS) -o $(NAME)
 
 %.o: %.c push_swap.h
-	$(CC) $(FLAGS) $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	rm -f *.o
