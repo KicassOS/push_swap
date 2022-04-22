@@ -16,10 +16,17 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-%.o: %.c
-	$(CC) $(FLAGS) $< -o $@
+SRC = main.c utils.c
+
+OBJECTS = $(SRC:.c=.o)
 
 all: $(NAME)
+
+$(NAME): $(OBJECTS) push_swap.h
+	$(CC) $(FLAGS) -o $(NAME)
+
+%.o: %.c push_swap.h
+	$(CC) $(FLAGS) $< -o $@
 
 clean:
 	rm -f *.o
@@ -27,6 +34,5 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm 
 
 re: fclean all
