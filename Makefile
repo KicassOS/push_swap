@@ -6,7 +6,7 @@
 #    By: pszleper <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 21:57:25 by pszleper          #+#    #+#              #
-#    Updated: 2022/04/22 05:11:19 by pszleper         ###   ########.fr        #
+#    Updated: 2022/04/26 18:19:24 by pszleper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,18 +18,19 @@ FLAGS = -Wall -Wextra -Werror
 
 SRC = main.c utils.c
 
-OBJECTS = $(SRC:.c=.o)
+OBJECTS = $(addprefix objects/, $(SRC:.c=.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS) push_swap.h
-	$(CC) $(FLAGS) -o $(NAME)
+	$(CC) $(FLAGS) $(OBJECTS) -o $(NAME)
 
-%.o: %.c push_swap.h
+objects/%.o: %.c push_swap.h
+	mkdir -p objects
 	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o
+	rm -rf objects
 	rm -f push_swap.h.gch
 
 fclean: clean

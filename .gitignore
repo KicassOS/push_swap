@@ -2,3 +2,5 @@
 a.out
 *.o
 *.h.gch
+libft.a
+libftprintf.a
