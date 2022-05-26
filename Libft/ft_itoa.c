@@ -6,13 +6,13 @@
 /*   By: pszleper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/07 22:02:43 by pszleper          #+#    #+#             */
-/*   Updated: 2021/12/10 19:23:10 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/05/22 04:13:02 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_intlen(int n)
+int	ft_intlen(int n)
 {
 	int	length_nb;
 	int	divider;
@@ -46,7 +46,7 @@ static char	*ft_allocate_memory_for_number(int n)
 	return (mem_ptr);
 }
 
-static int	ft_abs_value(int n)
+int	ft_abs_value(int n)
 {
 	if (n < 0)
 		return (-n);

@@ -6,7 +6,7 @@
 /*   By: pszleper <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 22:12:46 by pszleper          #+#    #+#             */
-/*   Updated: 2021/12/15 08:11:42 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/05/22 04:15:16 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stddef.h>
+# include <stdarg.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -34,7 +36,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -76,5 +77,40 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+// get_next_line.c
+char	*get_next_line(int fd);
+char	*ft_update_nl_pos(char **line, int position);
+char	*ft_output(char **line, int position, int bytes_read);
+char	*ft_strndup(char *input, int n);
+
+//get_next_line_utils.c
+void	*ft_calloc(size_t count, size_t size);
+int		ft_strchr_flag(char *s, int c, int flag);
+void	ft_free(char **p);
+char	*ft_strnjoin(char *s1, char *s2, int n);
+
+int		ft_printf(const char *format, ...);
+
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_putstr_hex(char *str);
+int		ft_putstr_address(char *str);
+
+int		ft_putnbr_unsigned(unsigned int n);
+int		ft_putnbr(int n);
+int		ft_putaddress(void *ptr);
+int		ft_putpointer(void *ptr);
+int		ft_puthex_upper(unsigned int to_convert);
+int		ft_puthex_lower(unsigned int to_convert);
+
+int		ft_intlen(int n);
+int		ft_unsigned_intlen(unsigned int n);
+int		ft_strncmp(char *s1, char *s2, size_t n);
+int		ft_abs_value(int n);
 
 #endif
