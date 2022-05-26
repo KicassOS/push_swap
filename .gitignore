@@ -4,3 +4,4 @@ a.out
 *.h.gch
 libft.a
 libftprintf.a
+push_swap

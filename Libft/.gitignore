@@ -7,4 +7,3 @@ a.out
 *.o
 libftprintf.a
 libft.a
-push_swap
