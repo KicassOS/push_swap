@@ -18,9 +18,29 @@ void	ft_handle_no_arg(int argc, char **argv)
 		ft_print_error_exit();
 }
 
+/*
+  This function gets called when argc == 2 (the list of ints is passed
+  between quotes)
+*/
 t_stack	*ft_parse_argstring(char **argv)
 {
-	
+	t_stack	*a;
+	char	**temp;
+	int		i;
+	int		j;
+
+	a = NULL;
+	i = 0;
+	temp = ft_split_whitespace(argv[1]);
+	while (temp[i])
+	{
+		j = ft_atoi2(temp[i]);
+		ft_stack_add_back(&a, ft_stack_new(j));
+		i++;
+	}
+	ft_free_string(temp);
+	free(temp);
+	return (a);
 }
 
 t_stack	*ft_arg_parse(int argc, char **argv)
@@ -38,11 +58,26 @@ t_stack	*ft_arg_parse(int argc, char **argv)
 		while (i < argc)
 		{
 			j = ft_atoi2(argv[i]);
-			ft_add_back(&a, ft_stack_new(j));
+			ft_stack_add_back(&a, ft_stack_new(j));
 			i++;
 		}
 	}
 	return (a);
+}
+
+char	ft_stack_is_sorted(t_stack *a)
+{
+	int	i;
+
+	i = a->nbr;
+	while (a)
+	{
+		if (i > a->nbr)
+			return (0);
+		i = a->nbr;
+		a = a->next;
+	}
+	return (1);
 }
 
 int	main(int argc, char **argv)
