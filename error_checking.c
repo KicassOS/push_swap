@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   error_checking.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 21:57:31 by pszleper          #+#    #+#             */
-/*   Updated: 2022/12/10 02:46:52 by pszleper         ###   ########.fr       */
+/*   Created: 2022/12/05 01:55:23 by pszleper          #+#    #+#             */
+/*   Updated: 2022/12/10 02:46:38 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# define PUSH_SWAP_ERROR 42
-# include "libft/libft.h"
-
-typedef struct s_stack
+void	ft_is_only_whitespace(char *str)
 {
-	long			nbr;
-	long			index;
-	struct s_stack	*next;
-	struct s_stack	*prev;
-}	t_stack;
+	int	i;
 
-void	ft_print_error_exit(void);
-void	ft_free_stack(t_stack **a);
-
-#endif
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_is_space(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}

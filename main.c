@@ -12,28 +12,52 @@
 
 #include "push_swap.h"
 
-char	arguments_valid(int	argc, char **argv)
+void	ft_handle_no_arg(int argc, char **argv)
 {
+	if (argc == 1 || ft_is_only_whitespace(argv[1]))
+		ft_print_error_exit();
+}
+
+t_stack	*ft_parse_argstring(char **argv)
+{
+	
+}
+
+t_stack	*ft_arg_parse(int argc, char **argv)
+{
+	t_stack	*a;
 	int	i;
 	int	j;
 
-	if (argc < 2)
-		return (0);
 	i = 1;
-	while (i < argc)
+	a = NULL;
+	if (argc == 2)
+		a = ft_parse_argstring(argv);
+	else
 	{
-		j = 0;
-		while (argv[j])
+		while (i < argc)
 		{
+			j = ft_atoi2(argv[i]);
+			ft_add_back(&a, ft_stack_new(j));
+			i++;
 		}
 	}
-	return (0);
+	return (a);
 }
 
 int	main(int argc, char **argv)
 {
-	if (!arguments_valid(argc, argv))
-		return (-1);
-	
+	t_stack	*a;
+
+	ft_handle_no_arg(argc, argv);
+	a = ft_arg_parse(argc, argv);
+	if (!a || ft_checkdup(a))
+	{
+		ft_free_stack(&a);
+		ft_print_error_exit();
+	}
+	if (!ft_stack_is_sorted(a))
+		ft_sort(&a);
+	ft_free(&a);
 	return (0);
 }
