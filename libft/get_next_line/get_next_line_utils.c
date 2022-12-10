@@ -3,45 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pszleper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:24:53 by pszleper          #+#    #+#             */
-/*   Updated: 2022/03/16 05:53:43 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/08/16 20:25:23 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-// libft copy-paste
-void	*ft_calloc(size_t count, size_t size)
-{
-	char		*ptr;
-	size_t		i;
-
-	i = 0;
-	ptr = malloc(size * count);
-	if (!ptr)
-		return (NULL);
-	while (i < size * count)
-	{
-		ptr[i] = 0;
-		i++;
-	}
-	return (ptr);
-}
-
-// same as in libft but doesn't segfault when the address of  s is NULL
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s && s[i])
-		i++;
-	return (i);
-}
+#include "../libft.h"
 
 // finds char c in s, returning its' position
 // flag is used to reduce the number of lines to pass the norm but it's messy
@@ -64,13 +33,10 @@ int	ft_strchr_flag(char *s, int c, int flag)
 }
 
 // frees memory and sets pointer address to NULL to prevent potential segfaults
-void	ft_free(char **p)
+void	ft_free(void **p)
 {
-	if (p && *p)
-	{
-		free(*p);
-		*p = NULL;
-	}
+	free(*p);
+	*p = NULL;
 }
 
 // same as libft, but only copies n chars to prevent segfaults
@@ -100,6 +66,6 @@ char	*ft_strnjoin(char *s1, char *s2, int n)
 		output[i++] = s2[j++];
 	output[i] = '\0';
 	if (s1)
-		ft_free(&s1);
+		ft_free((void **)&s1);
 	return (output);
 }

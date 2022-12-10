@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pszleper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:24:56 by pszleper          #+#    #+#             */
-/*   Updated: 2022/03/16 06:03:20 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:34:07 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../libft.h"
 
 // buffer is used to store the result of read
 // bytes_read is fed into strndup and strnjoin to prevent segfaults
@@ -29,6 +29,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	buffer = NULL;
 	position = ft_strchr_flag(line, '\n', 0);
+	bytes_read = 0;
 	while (position == -1 && position != -2)
 	{
 		buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
@@ -39,9 +40,9 @@ char	*get_next_line(int fd)
 			break ;
 		line = ft_strnjoin(line, buffer, bytes_read);
 		position = ft_strchr_flag(line, '\n', 1);
-		ft_free(&buffer);
+		ft_free((void **)&buffer);
 	}
-	ft_free(&buffer);
+	ft_free((void **)&buffer);
 	return (ft_output(&line, position, bytes_read));
 }
 
@@ -62,8 +63,8 @@ char	*ft_output(char **line, int position, int bytes_read)
 	else
 		position++;
 	current_line = ft_strndup(*line, position);
-	if (position == ft_strlen(*line))
-		ft_free(line);
+	if (position == (int) ft_strlen(*line))
+		ft_free((void **)line);
 	else
 		*line = ft_update_nl_pos(line, position);
 	return (current_line);
@@ -77,7 +78,7 @@ char	*ft_update_nl_pos(char **line, int position)
 
 	len = ft_strlen(*line) - position;
 	tmp = ft_strndup(*line + position, len);
-	ft_free(line);
+	ft_free((void **)line);
 	*line = tmp;
 	return (*line);
 }

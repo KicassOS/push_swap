@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pszleper < pszleper@student.42.fr >        +#+  +:+       +#+         #
+#    By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/24 04:40:22 by pszleper          #+#    #+#              #
-#    Updated: 2022/05/24 04:40:25 by pszleper         ###   ########.fr        #
+#    Updated: 2022/08/22 05:10:05 by pszleper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC	=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c	\
 		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c		\
 		ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c				\
 		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c			\
-		ft_lstmap.c \
+		ft_lstmap.c ft_is_space.c ft_split_whitespace.c\
 		$(GNL_SRC) $(FT_PRINTF_SRC)
 
 OBJECTS = $(SRC:.c=.o)
@@ -42,8 +42,7 @@ FT_PRINTF_SRC = $(addprefix $(FT_PRINTF_DIR), ft_converters.c 		\
 				ft_numconverters.c ft_printf.c ft_putpointer.c 	\
 				ft_strutil.c)
 
-HEADERS =	libft.h $(addprefix $(GNL_DIR), get_next_line.h) \
-			$(addprefix $(FT_PRINTF_DIR), ft_printf.h)
+HEADERS =	libft.h
 
 all: echo_compiling_libft $(NAME)
 
@@ -60,7 +59,7 @@ $(NAME): echo_compiling_libft $(OBJECTS)
 .PHONY: all clean fclean re echo_compiling_libft
 
 clean:
-	@rm -f *.o
+	@rm -f */*.o
 	@rm -f $(addprefix $(GNL_DIR), *.o)
 	@rm -f $(addprefix $(FT_PRINTF_DIR), *.o)
 	@echo "Cleaned the repo"

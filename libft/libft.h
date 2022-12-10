@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pszleper <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 22:12:46 by pszleper          #+#    #+#             */
-/*   Updated: 2022/05/22 04:15:16 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/08/22 01:17:53 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
+int		ft_is_space(char c);
 
 size_t	ft_strlen(const char *s);
 void	*ft_memset(void *b, int c, size_t len);
@@ -53,6 +54,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
+char	**ft_split_whitespace(char *s);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
@@ -78,22 +80,23 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
+/* get_next_line.c */
+
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
 
-// get_next_line.c
 char	*get_next_line(int fd);
 char	*ft_update_nl_pos(char **line, int position);
 char	*ft_output(char **line, int position, int bytes_read);
 char	*ft_strndup(char *input, int n);
 
-//get_next_line_utils.c
-void	*ft_calloc(size_t count, size_t size);
+/* get_next_line_utils.c */
 int		ft_strchr_flag(char *s, int c, int flag);
-void	ft_free(char **p);
+void	ft_free(void **p);
 char	*ft_strnjoin(char *s1, char *s2, int n);
 
+/* ft_printf.c */
 int		ft_printf(const char *format, ...);
 
 int		ft_putchar(char c);
