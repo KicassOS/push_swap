@@ -6,7 +6,7 @@
 /*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 03:33:23 by pszleper          #+#    #+#             */
-/*   Updated: 2022/12/10 04:07:25 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/12/10 04:29:58 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,17 @@ void	ft_stack_add_back(t_stack **stack, t_stack *stack_new)
 		*stack = stack_new;
 	else
 		(ft_stacklast(*stack))->next = stack_new;
+}
+
+int	ft_stacksize(t_stack *a)
+{
+	int	i;
+
+	i = 0;
+	while (a)
+	{
+		a = a->next;
+		i++;
+	}
+	return (i);
 }

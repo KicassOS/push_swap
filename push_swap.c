@@ -93,6 +93,6 @@ int	main(int argc, char **argv)
 	}
 	if (!ft_stack_is_sorted(a))
 		ft_sort(&a);
-	ft_free(&a);
+	ft_free_stack(&a);
 	return (0);
 }
