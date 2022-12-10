@@ -1,45 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_checking.c                                   :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 01:55:23 by pszleper          #+#    #+#             */
-/*   Updated: 2022/12/10 04:13:44 by pszleper         ###   ########.fr       */
+/*   Created: 2022/12/10 03:37:16 by pszleper          #+#    #+#             */
+/*   Updated: 2022/12/10 03:44:13 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	ft_is_only_whitespace(char *str)
+t_stack	*ft_stacklast(t_stack *a)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!ft_is_space(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-char	ft_check_duplicates(t_stack *a)
-{
-	t_stack	*temp;
-
-	while (a)
-	{
-		temp = a->next;
-		while (temp)
-		{
-			if (a->nbr == temp->nbr)
-				return (1);
-			temp = temp->next;
-		}
+	if (!a)
+		return (NULL);
+	while (a->next)
 		a = a->next;
-	}
-	return (0);
+	return (a);
 }

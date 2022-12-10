@@ -6,7 +6,7 @@
 /*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 21:57:31 by pszleper          #+#    #+#             */
-/*   Updated: 2022/12/10 04:07:40 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/12/10 04:12:22 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	ft_atoi2(char *str);
 char	ft_is_only_whitespace(char *str);
 void	ft_stack_add_back(t_stack **stack, t_stack *stack_new);
 t_stack	*ft_stacklast(t_stack *a);
+char	ft_check_duplicates(t_stack *a);
 
 
 #endif

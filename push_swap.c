@@ -86,7 +86,7 @@ int	main(int argc, char **argv)
 
 	ft_handle_no_arg(argc, argv);
 	a = ft_arg_parse(argc, argv);
-	if (!a || ft_checkdup(a))
+	if (!a || ft_check_duplicates(a))
 	{
 		ft_free_stack(&a);
 		ft_print_error_exit();
