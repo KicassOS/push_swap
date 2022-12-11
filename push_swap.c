@@ -22,7 +22,7 @@ void	ft_handle_no_arg(int argc, char **argv)
   This function gets called when argc == 2 (the list of ints is passed
   between quotes)
 */
-t_stack	*ft_parse_argstring(char **argv)
+t_stack	*ft_parse_argstring(char **argv, t_program *program)
 {
 	t_stack	*a;
 	char	**temp;
@@ -32,33 +32,34 @@ t_stack	*ft_parse_argstring(char **argv)
 	a = NULL;
 	i = 0;
 	temp = ft_split_whitespace(argv[1]);
+	program->split_mallocd = TRUE;
 	while (temp[i])
 	{
 		j = ft_atoi2(temp[i]);
-		ft_stack_add_back(&a, ft_stack_new(j));
+		ft_stack_add_back(&a, ft_stack_new(j, program));
 		i++;
 	}
-	ft_free_string(temp);
+	ft_free_split(temp, program);
 	free(temp);
 	return (a);
 }
 
-t_stack	*ft_arg_parse(int argc, char **argv)
+t_stack	*ft_arg_parse(int argc, char **argv, t_program *program)
 {
 	t_stack	*a;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	i = 1;
 	a = NULL;
 	if (argc == 2)
-		a = ft_parse_argstring(argv);
+		a = ft_parse_argstring(argv, program);
 	else
 	{
 		while (i < argc)
 		{
 			j = ft_atoi2(argv[i]);
-			ft_stack_add_back(&a, ft_stack_new(j));
+			ft_stack_add_back(&a, ft_stack_new(j, program));
 			i++;
 		}
 	}
@@ -83,16 +84,15 @@ char	ft_stack_is_sorted(t_stack *a)
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
+	t_program program;
 
+	ft_init_program(&program, &a);
 	ft_handle_no_arg(argc, argv);
-	a = ft_arg_parse(argc, argv);
+	a = ft_arg_parse(argc, argv, &program);
 	if (!a || ft_check_duplicates(a))
-	{
-		ft_free_stack(&a);
-		ft_print_error_exit();
-	}
+		ft_exit_program(&program, TRUE);
 	if (!ft_stack_is_sorted(a))
 		ft_sort(&a);
-	ft_free_stack(&a);
+	ft_exit_program(&a, FALSE);
 	return (0);
 }

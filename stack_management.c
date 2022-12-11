@@ -6,7 +6,7 @@
 /*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 03:33:23 by pszleper          #+#    #+#             */
-/*   Updated: 2022/12/10 04:29:58 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/12/11 06:18:10 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,17 @@ int	ft_stacksize(t_stack *a)
 		i++;
 	}
 	return (i);
+}
+
+t_stack	*ft_stack_new(int number, t_program *program)
+{
+	t_stack	*new;
+
+	new = malloc(sizeof(t_stack));
+	if (new == NULL)
+		ft_exit_program(program, TRUE);
+	program->stack_mallocd = TRUE;
+	new->nbr = number;
+	new->next = NULL;
+	return (new);
 }

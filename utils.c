@@ -6,7 +6,7 @@
 /*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 21:54:10 by pszleper          #+#    #+#             */
-/*   Updated: 2022/12/10 03:53:00 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/12/11 06:19:20 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_print_error_exit(void)
 	exit(PUSH_SWAP_ERROR);
 }
 
-void	ft_free_stack(t_stack **a)
+void	ft_free_stack(t_stack **a, t_program *program)
 {
 	t_stack	*temp;
 
@@ -30,12 +30,13 @@ void	ft_free_stack(t_stack **a)
 		free(*a);
 		*a = temp;
 	}
+	program->stack_mallocd = FALSE;
 }
 
 /*
   in ft_parse_argstring, frees the return value of ft_split
 */
-void	ft_free_string(char **temp)
+void	ft_free_split(char **temp, t_program *program)
 {
 	char	*num;
 
@@ -48,6 +49,7 @@ void	ft_free_string(char **temp)
 		free(num);
 	}
 	*temp = NULL;
+	program->split_mallocd = FALSE;
 }
 
 /*
@@ -79,4 +81,12 @@ int	ft_atoi2(char *str)
 	if ((neg * i) > 2147483647 || (neg * i) < -2147483648)
 		ft_print_error_exit();
 	return (neg * i);
+}
+
+void	ft_init_program(t_program *program, t_stack **stack_a)
+{
+	program->stack_mallocd = FALSE;
+	program->split_mallocd = FALSE;
+	program->stack_a = stack_a;
+	program->temp = NULL;
 }
