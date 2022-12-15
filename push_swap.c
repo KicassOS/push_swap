@@ -83,8 +83,8 @@ char	ft_stack_is_sorted(t_stack *a)
 
 int	main(int argc, char **argv)
 {
-	t_stack	*a;
-	t_program program;
+	t_stack		*a;
+	t_program	program;
 
 	ft_init_program(&program, &a);
 	ft_handle_no_arg(argc, argv);

@@ -6,7 +6,7 @@
 /*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 04:37:01 by pszleper          #+#    #+#             */
-/*   Updated: 2022/12/15 06:00:04 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/12/15 06:37:39 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,31 @@ void	ft_sort_b_until_three(t_stack **stack_a, t_stack **stack_b)
 			else
 				temp = temp->next;
 		}
+	}
+}
+
+/*
+  This function sorts the last 3 elements left in stack a
+*/
+void	ft_sort_last_three(t_stack **stack_a)
+{
+	if (ft_min(*stack_a) == (*stack_a)->nbr)
+	{
+		ft_rra(stack_a, 0);
+		ft_sa(stack_a, 0);
+	}
+	else if (ft_max(*stack_a) == (*stack_a)->nbr)
+	{
+		ft_ra(stack_a, 0);
+		if (!ft_checksorted(*stack_a))
+			ft_sa(stack_a, 0);
+	}
+	else
+	{
+		if (ft_find_index(*stack_a, ft_max(*stack_a)) == 1)
+			ft_rra(stack_a, 0);
+		else
+			ft_sa(stack_a, 0);
 	}
 }
 
