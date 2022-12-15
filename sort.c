@@ -6,7 +6,7 @@
 /*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 04:37:01 by pszleper          #+#    #+#             */
-/*   Updated: 2022/12/15 06:37:39 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/12/15 07:20:28 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ t_stack	*ft_sort_b(t_stack **stack_a)
 	if (ft_stacksize(*stack_a) > 3 && !ft_stack_is_sorted(*stack_a))
 		ft_pb(stack_a, &stack_b, 0);
 	if (ft_stacksize(*stack_a) > 3 && !ft_stack_is_sorted(*stack_a))
-		ft_sort_b_till_3(stack_a, &stack_b);
+		ft_sort_b_until_three(stack_a, &stack_b);
 	if (!ft_stack_is_sorted(*stack_a))
-		ft_sort_three(stack_a);
+		ft_sort_last_three(stack_a);
 	return (stack_b);
 }
 
@@ -100,7 +100,7 @@ void	ft_sort_last_three(t_stack **stack_a)
 	else if (ft_max(*stack_a) == (*stack_a)->nbr)
 	{
 		ft_ra(stack_a, 0);
-		if (!ft_checksorted(*stack_a))
+		if (!ft_stack_is_sorted(*stack_a))
 			ft_sa(stack_a, 0);
 	}
 	else

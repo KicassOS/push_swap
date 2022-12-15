@@ -93,6 +93,6 @@ int	main(int argc, char **argv)
 		ft_exit_program(&program, TRUE);
 	if (!ft_stack_is_sorted(a))
 		ft_sort(&a);
-	ft_exit_program(&a, FALSE);
+	ft_exit_program(&program, FALSE);
 	return (0);
 }

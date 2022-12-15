@@ -6,7 +6,7 @@
 /*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 06:42:41 by pszleper          #+#    #+#             */
-/*   Updated: 2022/12/15 06:49:32 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/12/15 07:20:53 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_ra(t_stack **a, int i)
 	if (!*a || !(*a)->next)
 		return ;
 	temp = *a;
-	*a = ft_lstlast(*a);
+	*a = ft_stacklast(*a);
 	(*a)->next = temp;
 	*a = temp->next;
 	temp->next = NULL;
@@ -34,7 +34,7 @@ void	ft_rb(t_stack **b, int i)
 	if (!*b || !(*b)->next)
 		return ;
 	tmp = *b;
-	*b = ft_lstlast(*b);
+	*b = ft_stacklast(*b);
 	(*b)->next = tmp;
 	*b = tmp->next;
 	tmp->next = NULL;
@@ -49,12 +49,12 @@ void	ft_rr(t_stack **a, t_stack **b, int i)
 	if (!*a || !((*a)->next) || !*b || !((*b)->next))
 		return ;
 	tmp = *a;
-	*a = ft_lstlast(*a);
+	*a = ft_stacklast(*a);
 	(*a)->next = tmp;
 	*a = tmp->next;
 	tmp->next = NULL;
 	tmp = *b;
-	*b = ft_lstlast(*b);
+	*b = ft_stacklast(*b);
 	(*b)->next = tmp;
 	*b = tmp->next;
 	tmp->next = NULL;
