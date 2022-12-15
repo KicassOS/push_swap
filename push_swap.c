@@ -15,7 +15,7 @@
 void	ft_handle_no_arg(int argc, char **argv)
 {
 	if (argc == 1 || ft_is_only_whitespace(argv[1]))
-		ft_print_error_exit();
+		exit(0);
 }
 
 /*
