@@ -6,7 +6,7 @@
 #    By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 21:57:25 by pszleper          #+#    #+#              #
-#    Updated: 2022/12/15 08:04:45 by pszleper         ###   ########.fr        #
+#    Updated: 2022/12/15 13:31:48 by pszleper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC = case_calculation_1.c case_calculation_2.c error_checking.c exit.c \
       push_swap.c rotation_types.c sort.c stack_management.c            \
       stack_operations_1.c stack_operations_2.c stack_operations_3.c    \
 	  stack_utils_1.c stack_utils_2.c applied_operations.c utils_1.c    \
-	  ft_split_whitespace_2.c
+	  utils_2.c ft_split_whitespace_2.c
 
 OBJECTS = $(addprefix objects/, $(SRC:.c=.o))
 

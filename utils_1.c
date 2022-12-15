@@ -6,7 +6,7 @@
 /*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 21:54:10 by pszleper          #+#    #+#             */
-/*   Updated: 2022/12/15 08:06:31 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/12/15 13:54:37 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	ft_atoi2(char *str)
 
 	i = 0;
 	neg = 1;
+	ft_check_atoi2(str);
 	while (ft_is_space(*str))
 		str++;
 	if (*str == '-')
@@ -71,16 +72,7 @@ int	ft_atoi2(char *str)
 	}
 	else if (*str == '+')
 		str++;
-	while (*str)
-	{
-		if (!ft_isdigit(*str))
-			ft_print_error_exit();
-		i = i * 10 + (*str - '0');
-		str++;
-	}
-	if ((neg * i) > 2147483647 || (neg * i) < -2147483648)
-		ft_print_error_exit();
-	return (neg * i);
+	return (ft_loop_rest(str, neg, i));
 }
 
 void	ft_init_program(t_program *program, t_stack **stack_a)
