@@ -31,7 +31,7 @@ t_stack	*ft_parse_argstring(char **argv, t_program *program)
 
 	a = NULL;
 	i = 0;
-	temp = ft_split_whitespace(argv[1]);
+	temp = ft_split_whitespace2(argv[1]);
 	program->split_mallocd = TRUE;
 	while (temp[i])
 	{

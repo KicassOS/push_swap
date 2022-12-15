@@ -6,7 +6,7 @@
 /*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 21:57:31 by pszleper          #+#    #+#             */
-/*   Updated: 2022/12/15 13:37:53 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/12/15 14:07:36 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_print_error_exit(void);
 char	ft_check_duplicates(t_stack *a);
 void	ft_exit_program(t_program *prog, char is_error);
 void	ft_init_program(t_program *program, t_stack **stack_a);
-char	**ft_split_whitespace2(char *s, t_program *prog);
+char	**ft_split_whitespace2(char *s);
 
 t_stack	*ft_stacklast(t_stack *a);
 char	ft_stack_is_sorted(t_stack *a);
