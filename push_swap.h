@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pszleper < pszleper@student.42.fr >        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 21:57:31 by pszleper          #+#    #+#             */
-/*   Updated: 2022/12/15 14:07:36 by pszleper         ###   ########.fr       */
+/*   Updated: 2023/01/01 01:14:33 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ int		ft_case_rarb_a(t_stack *a, t_stack *b, int j);
 int		ft_case_rrarrb_a(t_stack *a, t_stack *b, int j);
 int		ft_case_rarrb_a(t_stack *a, t_stack *b, int j);
 int		ft_case_rrarb_a(t_stack *a, t_stack *b, int j);
-int		ft_atoi2(char *str);
-void	ft_check_atoi2(char *str);
-long	ft_loop_rest(char *str, long neg, long i);
+int		ft_atoi2(char *str, t_program *prog);
+void	ft_check_atoi2(char *str, t_program *prog);
+long	ft_loop_rest(char *str, long neg, long i, t_program *prog);
 
 void	ft_sa(t_stack **a, int i);
 void	ft_sb(t_stack **b, int i);

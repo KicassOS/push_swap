@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pszleper <pszleper@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pszleper < pszleper@student.42.fr >        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 21:54:10 by pszleper          #+#    #+#             */
-/*   Updated: 2022/12/15 13:54:37 by pszleper         ###   ########.fr       */
+/*   Updated: 2022/12/30 04:01:04 by pszleper         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_free_stack(t_stack **a, t_program *program)
 {
 	t_stack	*temp;
 
+	temp = NULL;
 	if (!a)
 		return ;
 	while (*a)
@@ -30,6 +31,7 @@ void	ft_free_stack(t_stack **a, t_program *program)
 		free(*a);
 		*a = temp;
 	}
+	program->stack_a = NULL;
 	program->stack_mallocd = FALSE;
 }
 
@@ -48,6 +50,7 @@ void	ft_free_split(char **temp, t_program *program)
 		temp++;
 		free(num);
 	}
+	free(*temp);
 	*temp = NULL;
 	program->split_mallocd = FALSE;
 }
@@ -55,14 +58,14 @@ void	ft_free_split(char **temp, t_program *program)
 /*
   same as ft_atoi, but returns error if the number is invalid
 */
-int	ft_atoi2(char *str)
+int	ft_atoi2(char *str, t_program *prog)
 {
 	int			neg;
 	long long	i;
 
 	i = 0;
 	neg = 1;
-	ft_check_atoi2(str);
+	ft_check_atoi2(str, prog);
 	while (ft_is_space(*str))
 		str++;
 	if (*str == '-')
@@ -72,7 +75,7 @@ int	ft_atoi2(char *str)
 	}
 	else if (*str == '+')
 		str++;
-	return (ft_loop_rest(str, neg, i));
+	return (ft_loop_rest(str, neg, i, prog));
 }
 
 void	ft_init_program(t_program *program, t_stack **stack_a)

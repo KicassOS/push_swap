@@ -32,10 +32,11 @@ t_stack	*ft_parse_argstring(char **argv, t_program *program)
 	a = NULL;
 	i = 0;
 	temp = ft_split_whitespace2(argv[1]);
+	program->temp = temp;
 	program->split_mallocd = TRUE;
 	while (temp[i])
 	{
-		j = ft_atoi2(temp[i]);
+		j = ft_atoi2(temp[i], program);
 		ft_stack_add_back(&a, ft_stack_new(j, program));
 		i++;
 	}
@@ -58,7 +59,7 @@ t_stack	*ft_arg_parse(int argc, char **argv, t_program *program)
 	{
 		while (i < argc)
 		{
-			j = ft_atoi2(argv[i]);
+			j = ft_atoi2(argv[i], program);
 			ft_stack_add_back(&a, ft_stack_new(j, program));
 			i++;
 		}
@@ -86,6 +87,7 @@ int	main(int argc, char **argv)
 	t_stack		*a;
 	t_program	program;
 
+	a = NULL;
 	ft_init_program(&program, &a);
 	ft_handle_no_arg(argc, argv);
 	a = ft_arg_parse(argc, argv, &program);
