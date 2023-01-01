@@ -24,12 +24,10 @@ void	ft_handle_no_arg(int argc, char **argv)
 */
 t_stack	*ft_parse_argstring(char **argv, t_program *program)
 {
-	t_stack	*a;
 	char	**temp;
 	int		i;
 	int		j;
 
-	a = NULL;
 	i = 0;
 	temp = ft_split_whitespace2(argv[1]);
 	program->temp = temp;
@@ -37,34 +35,32 @@ t_stack	*ft_parse_argstring(char **argv, t_program *program)
 	while (temp[i])
 	{
 		j = ft_atoi2(temp[i], program);
-		ft_stack_add_back(&a, ft_stack_new(j, program));
+		ft_stack_add_back(program->stack_a, ft_stack_new(j, program));
 		i++;
 	}
 	ft_free_split(temp, program);
 	free(temp);
-	return (a);
+	return ((*program->stack_a));
 }
 
 t_stack	*ft_arg_parse(int argc, char **argv, t_program *program)
 {
-	t_stack	*a;
 	int		i;
 	int		j;
 
 	i = 1;
-	a = NULL;
 	if (argc == 2)
-		a = ft_parse_argstring(argv, program);
+		(*program->stack_a) = ft_parse_argstring(argv, program);
 	else
 	{
 		while (i < argc)
 		{
 			j = ft_atoi2(argv[i], program);
-			ft_stack_add_back(&a, ft_stack_new(j, program));
+			ft_stack_add_back(program->stack_a, ft_stack_new(j, program));
 			i++;
 		}
 	}
-	return (a);
+	return ((*program->stack_a));
 }
 
 char	ft_stack_is_sorted(t_stack *a)
