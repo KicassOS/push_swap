@@ -6,11 +6,13 @@
 #    By: pszleper < pszleper@student.42.fr >        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 21:57:25 by pszleper          #+#    #+#              #
-#    Updated: 2023/01/01 01:19:44 by pszleper         ###   ########.fr        #
+#    Updated: 2023/01/07 18:08:37 by pszleper         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
+
+BONUS_NAME = checker
 
 CC = gcc
 
@@ -22,7 +24,11 @@ SRC = case_calculation_1.c case_calculation_2.c error_checking.c exit.c \
 	  stack_utils_1.c stack_utils_2.c applied_operations.c utils_1.c    \
 	  utils_2.c ft_split_whitespace_2.c
 
+SRC_BONUS = checker.c checker_utils_1.c
+
 OBJECTS = $(addprefix objects/, $(SRC:.c=.o))
+
+OBJECTS_BONUS = $(addprefix objects/, $(SRC_BONUS:.c=.o))
 
 HEADER = push_swap.h
 
@@ -30,6 +36,9 @@ all: $(NAME)
 
 $(NAME): libft.a $(OBJECTS) $(HEADER)
 	$(CC) $(FLAGS) $(OBJECTS) libft.a $(HEADER) -o $(NAME)
+
+bonus: $(NAME) libft.a $(OBJECTS) $(OBJECTS_BONUS) $(HEADER)
+	$(CC) $(FLAGS) $(OBJECTS_BONUS) libft.a $(HEADER) -o $(BONUS_NAME)
 
 libft.a:
 	make -C ./libft
